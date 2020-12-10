@@ -81,6 +81,15 @@ a:hover {
     text-decoration: none;
 }
 
+.flex-box {
+    display: flex;
+}
+
+.flex-item {
+    flex: auto;
+    margin: 0 1rem;
+}
+
 .slider-label {
     margin: 0 1rem;
 }

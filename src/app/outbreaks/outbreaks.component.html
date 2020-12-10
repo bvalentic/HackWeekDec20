@@ -1,0 +1,19 @@
+
+<div class="toolbar-page">
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Date Recorded</th>
+                <th>Number of Infected</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let outbreak of outbreaks">
+                <td>{{outbreak.city}}</td>
+                <td>{{outbreak.dayRecorded}}</td>
+                <td>{{outbreak.numInfected}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
