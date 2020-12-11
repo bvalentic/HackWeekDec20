@@ -1,19 +1,20 @@
 
 <div class="toolbar-page">
-    <table>
-        <thead>
-            <tr>
-                <th>City</th>
-                <th>Date Recorded</th>
-                <th>Number of Infected</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let outbreak of outbreaks">
-                <td>{{outbreak.city}}</td>
-                <td>{{outbreak.dayRecorded}}</td>
-                <td>{{outbreak.numInfected}}</td>
-            </tr>
-        </tbody>
+    <table mat-table [dataSource]="outbreaks">
+        <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef>City</th>
+            <td mat-cell *matCellDef="let outbreak">{{outbreak.city}}</td>
+        </ng-container>
+        <ng-container matColumnDef="dayRecorded">
+            <th mat-header-cell *matHeaderCellDef>Day Recorded</th>
+            <td mat-cell *matCellDef="let outbreak">{{outbreak.dayRecorded}}</td>
+        </ng-container>
+        <ng-container matColumnDef="numInfected">
+            <th mat-header-cell *matHeaderCellDef>Number of Infected</th>
+            <td mat-cell *matCellDef="let outbreak">{{outbreak.numInfected}}</td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr mat-row *matRowDef="let outbreak; columns: tableColumns"></tr>
     </table>
 </div>

@@ -2,12 +2,12 @@
 
 export class Outbreak {
     city: String;
-    dateRecorded: String;
+    dayRecorded: String;
     numInfected: Number;
 
-    constructor(city: String, dateRecorded: String, numInfected: Number) {
+    constructor(city: String, dayRecorded: String, numInfected: Number) {
         this.city = city;
-        this.dateRecorded = dateRecorded;
+        this.dayRecorded = dayRecorded;
         this.numInfected = numInfected;
     }
 }

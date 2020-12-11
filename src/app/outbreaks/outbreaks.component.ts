@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Outbreak } from 'src/models/outbreak';
-import { OutbreakResponse } from 'src/models/outbreak-response';
 
 @Component({
   selector: 'app-outbreaks',
@@ -13,15 +12,17 @@ export class OutbreaksComponent implements OnInit {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   });
-  outbreaks: Array<any> = [];
+  outbreaks: Outbreak[] = [];
   url = "http://localhost:4000/graphql";
+
+  tableColumns = ['city', 'dayRecorded', 'numInfected'];
 
   constructor(
     private http: HttpClient
   ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getOutbreaks();
   }
 
@@ -33,9 +34,11 @@ export class OutbreaksComponent implements OnInit {
           numInfected
       }
     }`});
+
     let options = {
-      headers: this.headers
+      headers: this.headers,
     };
+
     this.http.post(this.url, body, options).subscribe(
       (response: any) => {
         this.outbreaks = response.data.listOutbreaks;
